@@ -1,10 +1,10 @@
-const userModel = require('../models/userModel');
+const User = require('../models/userModel');
 
 module.exports = {
 
-    index(req, res) {
-
-        res.send('Requisição bem-sucedida');
+    async index(req, res) {
+        let users = await User.find();
+        res.status(302).json(users);
 
     }
 }

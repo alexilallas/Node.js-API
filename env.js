@@ -1,3 +1,5 @@
-const port = 3000;
+const PORT = 3000;
+const HOST = '127.0.0.1';
+const DATABASE = 'node';
 
-module.exports = { port }
+module.exports = { PORT, HOST, DATABASE }
