@@ -3,6 +3,10 @@ const userController = require('./controllers/userController');
 
 const routes = Router();
 
-routes.get('/', userController.index);
+routes.get('/', (req, res) => {
+    res.send('The Apllication is running!');
+});
+
+routes.get('/find/:name', userController.find);
 
 module.exports = routes;
