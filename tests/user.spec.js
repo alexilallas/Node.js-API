@@ -13,23 +13,38 @@ const userTest = {
     bio: "I love tecnology and Animals"
 }
 
+let userDatabase = {};
+
 describe('Integration test', () => {
-    it('/find - GET', (done) => {
+    // it('/create - POST', (done) => {
+    //     chai.request(app)
+    //         .post('/create')
+    //         .query(userTest)
+    //         .end((err, res) => {
+    //             expect(res).to.have.status(201);
+    //             done();
+    //         });
+    // }),
+
+    it('/find - GET', () => {
         chai.request(app)
             .get('/find')
             .query(userTest)
             .end((err, res) => {
+                console.log(res)
                 expect(res).to.have.status(302);
-                done();
+                
             });
-    }),
-    it('/create - POST', (done) => {
-        chai.request(app)
-            .post('/create')
-            .query(userTest)
-            .end((err, res) => {
-                expect(res).to.have.status(201);
-                done();
-            });
-    });
+    })
+
+    // it('/update - PUT', (done) => {
+    //     chai.request(app)
+    //         .put('/update')
+    //         .query(userDatabase)
+    //         .end((err, res) => {
+    //             expect(res).to.have.status(302);
+    //             done();
+    //         });
+    // })
+
 });

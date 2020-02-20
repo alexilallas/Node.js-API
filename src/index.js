@@ -9,7 +9,7 @@ const app = express();
 const server = http.Server(app);
 
 //Database connection
-mongoose.connect('mongodb://localhost/' + DATABASE, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://localhost/' + DATABASE, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 //db.once('open', () => { console.log('Connected on database: ' + DATABASE) });

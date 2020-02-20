@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
-    profission: String,
-    bio: String
+    name: { type: String, required: true, unique: true },
+    age: { type: Number, min: 0, required: true },
+    profission: { type: String, required: true },
+    bio: { type: String, minlength: 10, required: true }
 });
 
 const userModel = mongoose.model('User', userSchema);
