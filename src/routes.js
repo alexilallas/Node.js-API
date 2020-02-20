@@ -7,6 +7,7 @@ routes.get('/', (req, res) => {
     res.send('The Apllication is running!');
 });
 
-routes.get('/find/:name', userController.find);
+routes.get('/find', userController.find);
+routes.post('/create', userController.create);
 
 module.exports = routes;

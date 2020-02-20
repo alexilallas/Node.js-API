@@ -1,27 +1,35 @@
 const chai = require('chai');
 const http = require('chai-http');
 
+const expect = chai.expect;
 const { app } = require('../src/index');
+
 chai.use(http);
 
+const userTest = {
+    name: "Alexi Lallas",
+    age: 24,
+    profission: "Programmer",
+    bio: "I love tecnology and Animals"
+}
+
 describe('Integration test', () => {
-    it('/ - GET', () => {
+    it('/find - GET', (done) => {
         chai.request(app)
-            .get('/')
+            .get('/find')
+            .query(userTest)
             .end((err, res) => {
-                chai.expect(err).to.be.null;
-                chai.expect(res).to.have.status(200);
+                expect(res).to.have.status(302);
+                done();
             });
     }),
-    it('/find/:name - GET', () => {
+    it('/create - POST', (done) => {
         chai.request(app)
-            .get('find')
+            .post('/create')
+            .query(userTest)
             .end((err, res) => {
-                console.log(err)
-                // chai.expect(err).to.be.null;
-                // chai.expect(res).to.have.status(302);
-                // chai.expect(res.body.length).to.be.equal(4);
-                // chai.expect(res.body).to.containSubset([alunoSchema]);
+                expect(res).to.have.status(201);
+                done();
             });
     });
 });
