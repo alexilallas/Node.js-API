@@ -26,15 +26,19 @@ module.exports = {
         }
     },
 
-    async update(req, res) {console.log(req.query)
+    async update(req, res) {
         try {
             if (!req.query._id) {
                 throw ({ name: 'field required', message: '_id field missing' });
             }
             let user = await userModel.updateOne({ _id: req.query._id }, req.query, { runValidators: true });
             res.status(200).json(user);
-        } catch (e) {console.log(e)
+        } catch (e) {
             res.status(500).json({ name: e.name, messagem: e.message, errors: e.errors })
         }
+    },
+
+    async delete(req, res) {
+
     }
 }
