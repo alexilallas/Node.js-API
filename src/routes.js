@@ -8,8 +8,9 @@ routes.get('/', (req, res) => {
 });
 
 // User routes
-routes.get('/find', userController.find);
 routes.post('/create', userController.create);
+routes.get('/find', userController.find);
 routes.put('/update', userController.update);
+routes.delete('/delete', userController.exclude);
 
 module.exports = routes;

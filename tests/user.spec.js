@@ -47,6 +47,16 @@ describe('Integration test', () => {
                 expect(res).to.have.status(200);
                 done();
             });
+    }),
+
+    it('/delete - DELETE', (done) => {
+        chai.request(app)
+            .put('/delete')
+            .query(userTest)
+            .end((err, res) => {
+                expect(res).to.have.status(200);
+                done();
+            });
     })
 
 });
